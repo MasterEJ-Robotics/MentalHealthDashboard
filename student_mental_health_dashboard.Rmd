@@ -1,0 +1,28 @@
+---
+title: "Student Mental Health Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+
+
+df <- read.csv("/Users/ethanjohn/Desktop/Data Science/Projects/Datasets/Students Social Media Addiction copy.csv")
+```
+
+## Mental Health Overview
+Row
+----------------------------------------
+### Count of Students by Mental Health Score
+```{r bar_chart, include = TRUE}
+ggplot(df, aes(x = factor(Mental_Health_Score))) + geom_bar(fill  = "orange", color = "white") + labs(title = "Count of Students by Mental Health Score", x = "Score", y = "Number of students") + theme_minimal()
+```
+
+### Boxplot of Mental Health Scores by Gender
+```{r box_plot, include = TRUE}
+ggplot(df, aes(x = Gender, y = Mental_Health_Score, fill = Gender)) + geom_boxplot(alpha=0.7) + labs(title = "Mental Health Scores by Gender", x = "Gender", y = "Mental Health Scores") + theme_minimal() + theme(legend.position = "none")
+```
