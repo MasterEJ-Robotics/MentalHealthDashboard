@@ -31,3 +31,8 @@ ggplot(df, aes(x = Gender, y = Mental_Health_Score, fill = Gender)) + geom_boxpl
 ```{r density plot}
 ggplot(df, aes(x = Mental_Health_Score)) + geom_density(alpha = 0.2) + labs(title = "Mental Health of Students", x = "Mental Health Score", y = "Density") + theme_minimal()
 ```
+
+### Density Plot of Addicted Scores by Gender
+```{r density plot2}
+ggplot(df, aes(x = Addicted_Score, fill = Gender)) + geom_density(alpha = 0.2) + labs(title = "Addicted Score", x = "Addicted Score by Gender", y = "Density")
+```
