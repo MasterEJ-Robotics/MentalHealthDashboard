@@ -26,3 +26,8 @@ ggplot(df, aes(x = factor(Mental_Health_Score))) + geom_bar(fill  = "orange", co
 ```{r box_plot, include = TRUE}
 ggplot(df, aes(x = Gender, y = Mental_Health_Score, fill = Gender)) + geom_boxplot(alpha=0.7) + labs(title = "Mental Health Scores by Gender", x = "Gender", y = "Mental Health Scores") + theme_minimal() + theme(legend.position = "none")
 ```
+
+### Density Plot of Mental Health Scores
+```{r density plot}
+ggplot(df, aes(x = Mental_Health_Score)) + geom_density(alpha = 0.2) + labs(title = "Mental Health of Students", x = "Mental Health Score", y = "Density") + theme_minimal()
+```
