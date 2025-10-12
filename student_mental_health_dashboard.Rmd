@@ -7,32 +7,44 @@ output:
 ---
 
 ```{r setup, include=FALSE}
+install.packages(c("flexdashboard", "tidyverse", "plotly"))
 library(flexdashboard)
 library(tidyverse)
+library(plotly)
 
 
 df <- read.csv("/Users/ethanjohn/Desktop/Data Science/Projects/Datasets/Students Social Media Addiction copy.csv")
 ```
 
+``` {r main, include = TRUE}
+ggplotly(p1)
+ggplotly(p2)
+ggplotly(p3)
+ggplotly(p4)
+```
 ## Mental Health Overview
 Row
 ----------------------------------------
 ### Count of Students by Mental Health Score
 ```{r bar_chart, include = TRUE}
-ggplot(df, aes(x = factor(Mental_Health_Score))) + geom_bar(fill  = "orange", color = "white") + labs(title = "Count of Students by Mental Health Score", x = "Score", y = "Number of students") + theme_minimal()
+p1 <- ggplot(df, aes(x = factor(Mental_Health_Score))) + geom_bar(fill  = "orange", color = "white") + labs(title = "Count of Students by Mental Health Score", x = "Score", y = "Number of students") + theme_minimal()
+
 ```
 
 ### Boxplot of Mental Health Scores by Gender
 ```{r box_plot, include = TRUE}
-ggplot(df, aes(x = Gender, y = Mental_Health_Score, fill = Gender)) + geom_boxplot(alpha=0.7) + labs(title = "Mental Health Scores by Gender", x = "Gender", y = "Mental Health Scores") + theme_minimal() + theme(legend.position = "none")
+p2 <- ggplot(df, aes(x = Gender, y = Mental_Health_Score, fill = Gender)) + geom_boxplot(alpha=0.7) + labs(title = "Mental Health Scores by Gender", x = "Gender", y = "Mental Health Scores") + theme_minimal() + theme(legend.position = "none")
+
 ```
 
 ### Density Plot of Mental Health Scores
 ```{r density plot}
-ggplot(df, aes(x = Mental_Health_Score)) + geom_density(alpha = 0.2) + labs(title = "Mental Health of Students", x = "Mental Health Score", y = "Density") + theme_minimal()
+p3 <- ggplot(df, aes(x = Mental_Health_Score)) + geom_density(alpha = 0.2) + labs(title = "Mental Health of Students", x = "Mental Health Score", y = "Density") + theme_minimal()
+
 ```
 
 ### Density Plot of Addicted Scores by Gender
 ```{r density plot2}
-ggplot(df, aes(x = Addicted_Score, fill = Gender)) + geom_density(alpha = 0.2) + labs(title = "Addicted Score", x = "Addicted Score by Gender", y = "Density")
+p4 <- ggplot(df, aes(x = Addicted_Score, fill = Gender)) + geom_density(alpha = 0.2) + labs(title = "Addicted Score", x = "Addicted Score by Gender", y = "Density")
+
 ```
